@@ -1,13 +1,28 @@
 #downloadCVbutton-container {
+    position: relative;      /* needed for the pseudo-element */
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    position: relative;
-    background-color: rgba(0, 128, 255, 0.589);
-    border: 1px solid  rgb(0, 128, 255);
+    padding: 0.5rem 1rem;    /* keep this as-is so layout doesn’t change */
     border-radius: 999px;
-    margin: 0;
+    
 }
+
+/* extra background, not affecting layout */
+#downloadCVbutton-container::before {
+    content: '';
+    position: absolute;
+    inset: -0.25rem -0.75rem;     /* extend top/bottom and left/right */
+    border-radius: 999px;
+    background-color: rgba(0, 128, 255, 0.315);  /* your color here */
+    z-index: -1;   
+    border: 1px solid rgb(0, 115, 255);               /* sit behind the content */
+}
+
+#downloadCVbutton-container:hover {
+    cursor: pointer;
+} 
+
 
 #downloadCVbutton {
     background: none;
@@ -18,6 +33,3 @@
     margin: 0;
 } 
 
-#downloadCVbutton:hover {
-    
-} 
