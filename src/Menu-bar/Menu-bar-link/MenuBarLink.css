@@ -4,6 +4,7 @@ a {
 }
 
 #menu-bar-item {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -11,6 +12,20 @@ a {
     padding: 0;
 }
 
-#menu-bar-item a:hover {
-    text-decoration: underline;
+/* underline bar for the whole item (image + text) */
+#menu-bar-item::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -0.5rem;                 /* just below the content */
+    height: 2px;
+    width: 0;                        /* start hidden */
+    background-color: rgb(255, 255, 255);
+    transform-origin: left;
+    transition: width 0.25s ease-out; /* animate left → right */
+}
+
+/* hover: animate underline and change link color */
+#menu-bar-item:hover::after {
+    width: 100%;
 }
