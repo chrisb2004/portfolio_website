@@ -10,16 +10,18 @@ function HomeSection() {
                 </section>
 
                 <section id='headlines-container'>
-                    <h2 className="headline">
-                        Hi, I'm <span>Chris</span>, a 3rd-year <br></br>
-                        <span>Computer Engineering</span> student <br></br>
-                     building scalable solutions!
-                    </h2>
+                    <h1 className="headline">
+                        Hello!<br></br> I'm <span>CHRISTOPHER</span>,<br></br> 
+                        a <span>COMPUTER ENGINEERING</span> student <br></br>
+                        building scalable solutions!
+                    </h1>
                 </section>
             </section>
             
 
-            <section>
+            <section id='skills-section'>
+                <h1>My Skills</h1>
+                <p>Some of my relevant skills</p>
                 <SkillsSection />
             </section>
         </div>

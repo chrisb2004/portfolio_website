@@ -2,6 +2,8 @@
     overflow: hidden;
     width: 100%;
     margin: 2rem 0;
+ 
+    padding: 2rem;
 }
 
 .skills-conveyor-track {
@@ -20,9 +22,9 @@
 }
 
 .skills-conveyor-item img {
-    width: 3rem;
-    height: 3rem;
     object-fit: contain;
+    width: 90px;
+    cursor: default;
 }
 
 /* Move by one copy width so when the last icon exits, the first comes back (seamless loop) */

@@ -1,7 +1,5 @@
-h1, h2, h3, h4, h5, h6, p {
-    color: white;
-    margin: 0;
-    padding: 0;
+#home-section-container {
+    margin-bottom: 13rem;
 }
 
 #introduction-section-container {
@@ -11,32 +9,28 @@ h1, h2, h3, h4, h5, h6, p {
     gap: 3rem;
     height: 100vh;
     align-items: center;
+    padding: 0 17rem;
 }
 
 #introduction-section-container span {
-    color: rgb(0, 166, 255);
-}
-
-.name {
-    margin-bottom: 1.5rem;
-    color: rgb(0, 166, 255);
-    font-size: 3.5rem;
-    filter: brightness(1.2);
+    color: rgba(76, 157, 255, 0.85);
 }
 
 .headline {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     font-weight: 500;
 }
 
 #profile-image-container {
     background-color: white;
-    padding: 4px 4px 0 4px;
+    padding: 3px 3px 0 3px;
     margin: 0;
     border-radius: 0.7rem;
     transform: rotate(-5deg);
     transition: transform 0.25s ease;
     display: block;
+    cursor: default;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.072);
 }
 
 #profile-image-container:hover {
@@ -45,13 +39,29 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 #profile-image {
-    width: 12rem;
+    width: 14rem;
     height: auto;
     border-radius: 0.5rem;
     padding: 0;
     margin: 0;
+    cursor: default;
 }
 
 .headline {
     line-height: 3.4rem;
+}
+
+#skills-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#skills-section h1 {
+    margin-bottom: 1rem;
+}
+
+#skills-section p {
+    color: rgb(113, 113, 113);
+    margin-bottom: 1rem;
 }

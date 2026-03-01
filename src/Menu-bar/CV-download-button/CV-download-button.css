@@ -5,7 +5,7 @@
     gap: 0.5rem;
     padding: 0.5rem 1rem;    /* keep this as-is so layout doesn’t change */
     border-radius: 999px;
-    transition: filter 0.3s ease;            /* sit behind the content */
+    transition: filter 0.2s ease;            /* sit behind the content */
 }
 
 /* extra background, not affecting layout */
@@ -14,14 +14,14 @@
     position: absolute;
     inset: -0.25rem -0.75rem;     /* extend top/bottom and left/right */
     border-radius: 999px;
-    background-color: rgba(0, 128, 255, 0.315);  /* your color here */
+    background-color: rgba(76, 157, 255, 0.835);  /* your color here */
     z-index: -1;   
-    border: 1px solid rgb(0, 115, 255);  
+    border: 1px solid rgba(0, 115, 255, 0);  
     cursor: pointer; 
 }
 
 #downloadCVbutton-container:hover {
-    filter: brightness(1.3);
+    filter: brightness(1.1);
 } 
 
 
