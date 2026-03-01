@@ -1,0 +1,51 @@
+a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+#menu-bar-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+/* 
+underline bar for the whole item (image + text) 
+
+::after creates a pseudo-element that acts like a virtual child
+inserted AFTER the element's real content.
+
+DOM mental model:
+#menu-bar-item
+ ├─ real content (image + text)
+ └─ ::after (underline bar)
+*/
+#menu-bar-link::after {
+    content: '';                     /* REQUIRED → without this the pseudo-element doesn't exist */
+
+    position: absolute;              /* allows precise placement relative to parent */
+    left: 0;                         /* align underline with left edge of parent */
+    bottom: -0.5rem;                 /* place slightly below the content */
+
+    height: 2px;                     /* thickness of underline */
+    width: 0;                        /* start invisible (no width) */
+
+    background-color: rgb(255, 255, 255);  /* underline color */
+
+    transform-origin: left;          /* if transforms were used, animation would start from left */
+                                     /* (not strictly needed here but often used with scale animations) */
+
+    transition: width 0.25s ease-out; /* animate width changes smoothly */
+}
+
+/*
+Hover state:
+When the parent is hovered, the pseudo-element's width changes.
+Because width has a transition, it animates from 0 → 100%.
+*/
+#menu-bar-link:hover::after {
+    width: 100%;
+}

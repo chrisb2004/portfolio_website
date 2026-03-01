@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(26, 26, 26);
+    background-color: rgb(31, 31, 31);
     padding: 0 1.5rem;
     margin: 1rem auto 0;         /* center horizontally with space at top */
     gap: 2rem;

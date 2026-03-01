@@ -1,0 +1,32 @@
+.skills-conveyor-wrap {
+    overflow: hidden;
+    width: 100%;
+    margin: 2rem 0;
+}
+
+.skills-conveyor-track {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    width: max-content;
+    animation: conveyor-belt 30s linear infinite;
+}
+
+.skills-conveyor-item {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skills-conveyor-item img {
+    width: 3rem;
+    height: 3rem;
+    object-fit: contain;
+}
+
+/* Move by one copy width so when the last icon exits, the first comes back (seamless loop) */
+@keyframes conveyor-belt {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-25%); }  /* 1/4 of track = one copy when TRACK_COPIES = 4 */
+}

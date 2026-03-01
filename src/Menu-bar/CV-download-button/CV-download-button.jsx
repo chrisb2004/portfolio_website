@@ -1,4 +1,4 @@
-import './CVdownloadButton.css'
+import './CV-download-button.css'
 
 function CVdownloadButton() {
     return (
