@@ -21,7 +21,7 @@ function ContactSection() {
                     </a>
                 </li>
                 <li className='contact-list-item-rl'>
-                    <a href='mailto:christopherblanco@gmail.com' target='_blank' rel='noreferrer'>
+                    <a href='mailto:chrisblanco.2004@gmail.com' target='_blank' rel='noreferrer'>
                         <img src={emailIcom}></img>
                     </a>
                 </li>
