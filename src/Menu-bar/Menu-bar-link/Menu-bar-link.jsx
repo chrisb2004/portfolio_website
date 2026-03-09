@@ -4,7 +4,20 @@ function MenuBarLink(props) {
     return (
         <div id='menu-bar-link'>
             <img src={props.imgSrc} alt={props.title} />
-            <a href={props.sectionLink}>{props.title}</a>
+            <a 
+                href={props.sectionLink} 
+                onClick={(e) => {
+                    e.preventDefault();
+                    props.onClick?.(); // show main body if needed
+                    if (props.sectionLink) {
+                      requestAnimationFrame(() => {
+                        document.querySelector(props.sectionLink)?.scrollIntoView({ behavior: 'smooth' });
+                      });
+                    }
+                  }}
+            >
+                {props.title}
+            </a>
         </div>
     )
 }

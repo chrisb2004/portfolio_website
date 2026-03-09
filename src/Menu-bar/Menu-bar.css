@@ -15,5 +15,41 @@
     right: 0;
     left: 0;
     z-index: 1000;
-    
 }
+
+#downloadCVbutton-container {
+    position: relative;      /* needed for the pseudo-element */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;    /* keep this as-is so layout doesn’t change */
+    border-radius: 999px;
+    transition: filter 0.2s ease;            /* sit behind the content */
+}
+
+/* extra background, not affecting layout */
+#downloadCVbutton-container::before {
+    content: '';
+    position: absolute;
+    inset: -0.25rem -0.75rem;     /* extend top/bottom and left/right */
+    border-radius: 999px;
+    background-color: rgba(76, 157, 255, 0.835);  /* your color here */
+    z-index: -1;   
+    cursor: pointer; 
+}
+
+#downloadCVbutton-container:hover {
+    filter: brightness(1.1);
+} 
+
+
+#downloadCVbutton {
+    background: none;
+    border: none;
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+} 
+
