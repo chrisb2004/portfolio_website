@@ -11,12 +11,12 @@ function ContactSection() {
             <h3>Feel free to contact me!</h3>
             <ul id='contact-list'>
                 <li className='contact-list-item-rl'>
-                    <a href='https://www.linkedin.com/in/christopher-blanco-b7338a272/' target='_blank' rel='noreferrer'>
+                    <a href='https://www.linkedin.com/in/christopher-blanco-035526333/' target='_blank' rel='noreferrer'>
                         <img src={linkedinIcon}></img>
                     </a>
                 </li>
                 <li className='contact-list-item-rr'>
-                    <a href='https://github.com/christopherblanco' target='_blank' rel='noreferrer'>
+                    <a href='https://github.com/chrisb2004' target='_blank' rel='noreferrer'>
                         <img src={githubFooterIcon}></img>
                     </a>
                 </li>
