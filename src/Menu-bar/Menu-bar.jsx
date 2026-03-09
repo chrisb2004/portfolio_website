@@ -24,7 +24,9 @@ function MenuBar({ onHomeClick, onShowMainBody }) {
 
             <div id='downloadCVbutton-container'>
                 <img src='./src/assets/download.png'></img>
-                <button id='downloadCVbutton'>Download CV</button>
+                <a id='downloadCVbutton' href='/Christopher-Blanco-CV.pdf' download>
+                    Download CV
+                </a>
             </div> 
         </nav>
 

@@ -9,7 +9,7 @@
     justify-content: center;
     gap: 3rem;
     align-items: center;
-    padding: 0 15rem;
+    padding: 0 4rem;
 }
 
 #introduction-section-container span {
@@ -21,6 +21,29 @@
     font-weight: 500;
     line-height: 3.4rem;
 }
+
+@media screen and (max-width: 1385px) {
+    .headline {
+        font-size: 2.4rem;
+        line-height: 3rem;
+    }
+
+    #profile-image {
+        width: 12rem !important;
+    }
+}
+  
+  @media (max-width: 1025px) {
+    .headline {
+        font-size: 2.1rem;
+        font-weight: 500;
+        line-height: 2.6rem;
+    }
+
+    #profile-image {
+        width: 10rem !important;
+    }
+  }
 
 #profile-image-container {
     background-color: white;
