@@ -26,6 +26,15 @@
     cursor: default;
 }
 
+@media (max-width: 1385px) {
+    .skills-conveyor-item img { width: 75px; }
+  }
+  
+  @media (max-width: 750px) {
+    .skills-conveyor-item img { width: 65px; }
+  }
+  
+
 /* Move by one copy width so when the last icon exits, the first comes back (seamless loop) */
 @keyframes conveyor-belt {
     0%   { transform: translateX(0); }
@@ -36,6 +45,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 4rem;
 }
 
 #skills-section h1 {
@@ -44,5 +54,5 @@
 
 #skills-section p {
     color: rgb(113, 113, 113);
-    margin-bottom: 4rem;
+
 }
