@@ -1,12 +1,12 @@
 import './Menu-bar.css'
 import MenuBarLink from './Menu-bar-link/Menu-bar-link'
-import CVdownloadButton from './CV-download-button/CV-download-button'
 
-function MenuBar() {
+function MenuBar({ onHomeClick, onShowMainBody }) {
     const items = [
-        { title: "Home", sectionLink:"", imgSrc: "./src/assets/home-section-icon.png" },
-        { title: "Projects", sectionLink:"", imgSrc: "./src/assets/projects-section-icon.png" },
-        { title: "Contact", sectionLink:"", imgSrc: "./src/assets/contact-section-icon.png" }
+        { title: "Home", onClick: onHomeClick, sectionLink:"", imgSrc: "./src/assets/home-section-icon.png" },
+        { title: "About", onClick: onShowMainBody, sectionLink:"#about-section", imgSrc: "./src/assets/about-section-icon.png" },
+        { title: "Projects", onClick: onShowMainBody, sectionLink:"#projects-section", imgSrc: "./src/assets/projects-section-icon.png" },
+        { title: "Contact", onClick: onShowMainBody, sectionLink:"#contact-section", imgSrc: "./src/assets/contact-section-icon.png" }
     ]
 
     return (
@@ -18,10 +18,14 @@ function MenuBar() {
                     title={item.title}
                     sectionLink={item.sectionLink}
                     imgSrc={item.imgSrc}
+                    onClick={item.onClick}
                 />
             ))}
 
-            <CVdownloadButton/>     
+            <div id='downloadCVbutton-container'>
+                <img src='./src/assets/download.png'></img>
+                <button id='downloadCVbutton'>Download CV</button>
+            </div> 
         </nav>
 
         

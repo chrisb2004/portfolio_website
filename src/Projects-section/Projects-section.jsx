@@ -3,7 +3,7 @@ import './Projects-section.css'
 function ProjectsSection() {
     return (
         <div id='projects-section-container'>
-            <h1>Projects Showcase</h1>
+            <h1>Project Showcase</h1>
             <p>Selected work that demonstrates my technical expertise</p>
 
             <ul id='project-list'>

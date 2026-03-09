@@ -3,8 +3,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 auto;
+    justify-content: center;
     gap: 1rem;
+    margin: 0 0 10rem 0;
 }
 
 #projects-section-container p {
@@ -27,14 +28,15 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin-bottom: 10rem;
 }
 
 .project-image-container {
     background-color: white;
-    padding: 1rem;
+    padding: 0.5rem;
     border-radius: 1rem;
     margin-bottom: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.072);
+    transition: transform 0.2s ease;
 }
 
 .project-list-item img {
@@ -42,10 +44,9 @@
     width: 100%;
     height: 350px;
     cursor: default;
-    transition: transform 0.2s ease;
 }
 
-.project-list-item img:hover {
+.project-image-container:hover {
     transform: scale(1.02);
 }
 

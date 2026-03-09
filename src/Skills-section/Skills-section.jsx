@@ -21,6 +21,11 @@ function SkillsSection() {
     const trackItems = Array(TRACK_COPIES).fill(SKILL_ICONS).flat()
     return (
         <div className="skills-conveyor-wrap">
+            <section id='skills-section'>
+                <h1>My Skills</h1>
+                <p>Some of my relevant skills</p>
+            </section>
+
             <div className="skills-conveyor-track" aria-hidden="true">
                 {trackItems.map((skill, i) => (
                     <div key={i} className="skills-conveyor-item">

@@ -1,8 +1,7 @@
 .skills-conveyor-wrap {
     overflow: hidden;
     width: 100%;
-    margin: 2rem 0;
- 
+    margin: 0 0 10rem 0;
     padding: 2rem;
 }
 
@@ -31,4 +30,19 @@
 @keyframes conveyor-belt {
     0%   { transform: translateX(0); }
     100% { transform: translateX(-25%); }  /* 1/4 of track = one copy when TRACK_COPIES = 4 */
+}
+
+#skills-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#skills-section h1 {
+    margin-bottom: 1rem;
+}
+
+#skills-section p {
+    color: rgb(113, 113, 113);
+    margin-bottom: 4rem;
 }
