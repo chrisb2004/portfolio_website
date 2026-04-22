@@ -1,5 +1,6 @@
 import { render, screen, cleanup } from '@testing-library/react'
-import { describe, it, expect, afterEach } from 'vitest'
+import userEvent from '@testing-library/user-event'
+import { describe, it, expect, afterEach, vi, beforeEach } from 'vitest'
 import MenuBarLink from './Menu-bar-link'
 
 afterEach(() => {
@@ -7,29 +8,123 @@ afterEach(() => {
 })
 
 describe('MenuBarLink', () => {
-  /**
-   * it.each([ ... ]) holds a TABLE of test cases.
-   * Each row is one scenario: the same test runs once per row, with those values
-   * passed as arguments to the callback (title, sectionLink, imgSrc).
-   *
-   * Use this when several cases differ only by data (same assertions, different props).
-   */
-  it.each([
-    ['About', '#about-section', '/about.png'],
-    ['Projects', '#projects-section', '/projects.png'],
-    ['Contact', '#contact-section', '/contact.png'],
-  ])(
-    'renders link "%s" with href %s and matching image alt',
-    (title, sectionLink, imgSrc) => {
+
+  // ─── onClick ────────────────────────────────────────────────────────────────
+
+  describe('onClick behaviour', () => {
+    it.each([
+      ['Home',     '',                  '/home.png'],
+      ['About',    '#about-section',    '/about.png'],
+      ['Projects', '#projects-section', '/projects.png'],
+      ['Contact',  '#contact-section',  '/contact.png'],
+    ])(
+      'calls onClick when "%s" link is clicked',
+      async (title, sectionLink, imgSrc) => {
+        const user = userEvent.setup()
+        const onClickMock = vi.fn()
+
+        render(
+          <MenuBarLink
+            title={title}
+            sectionLink={sectionLink}
+            imgSrc={imgSrc}
+            onClick={onClickMock}
+          />
+        )
+
+        await user.click(screen.getByText(title))
+
+        expect(onClickMock).toHaveBeenCalledOnce()
+      }
+    )
+
+    it('does not throw if onClick prop is not provided', async () => {
+      const user = userEvent.setup()
+
       render(
-        <MenuBarLink title={title} sectionLink={sectionLink} imgSrc={imgSrc} />
+        <MenuBarLink
+          title="Home"
+          sectionLink=""
+          imgSrc="/home.png"
+        />
       )
 
-      const link = screen.getByRole('link', { name: new RegExp(title) })
-      expect(link).toHaveAttribute('href', sectionLink)
+      // onClick is optional (?.) in the component — this should not throw
+      await expect(
+        user.click(screen.getByText('Home'))
+      ).resolves.not.toThrow()
+    })
+  })
 
-      const img = screen.getByRole('img', { name: title })
-      expect(img).toHaveAttribute('src', imgSrc)
-    }
-  )
+  // ─── scrollIntoView ──────────────────────────────────────────────────────────
+
+  describe('scrollIntoView behaviour', () => {
+    let scrollMock
+
+    beforeEach(() => {
+      scrollMock = vi.fn()
+
+      /*
+      
+      The reason it's there is to give the DOM a moment to finish any layout changes before scrolling — so the scroll lands in the right position. 
+      Think of it as a polite "wait one frame, then scroll."
+      The problem in tests is that jsdom (the fake browser Vitest uses) doesn't actually paint frames, so requestAnimationFrame either runs inconsistently or not at all. 
+      That's why we mock it like this:
+
+      */
+      vi.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => { cb(); return 0; })
+      // jsdom does not implement scrollIntoView — we need to mock it
+      // We also need document.querySelector to return a fake element
+      vi.spyOn(document, 'querySelector').mockReturnValue({
+        scrollIntoView: scrollMock,
+      })
+    })
+
+    afterEach(() => {
+      vi.restoreAllMocks()
+    })
+
+    it.each([
+      ['About',    '#about-section'],
+      ['Projects', '#projects-section'],
+      ['Contact',  '#contact-section'],
+    ])(
+      'calls scrollIntoView with smooth behaviour for "%s"',
+      async (title, sectionLink, imgSrc) => {
+        const user = userEvent.setup()
+
+        render(
+          <MenuBarLink
+            title={title}
+            sectionLink={sectionLink}
+            imgSrc={imgSrc}
+            onClick={vi.fn()}
+          />
+        )
+
+        await user.click(screen.getByText(title))
+
+        // requestAnimationFrame is sync in jsdom, so scrollIntoView fires immediately
+        expect(document.querySelector).toHaveBeenCalledWith(sectionLink)
+        expect(scrollMock).toHaveBeenCalledWith({ behavior: 'smooth' })
+      }
+    )
+
+    it('does NOT call scrollIntoView when sectionLink is empty (Home)', async () => {
+      const user = userEvent.setup()
+
+      render(
+        <MenuBarLink
+          title="Home"
+          sectionLink=""
+          imgSrc="/home.png"
+          onClick={vi.fn()}
+        />
+      )
+
+      await user.click(screen.getByText('Home'))
+
+      expect(scrollMock).not.toHaveBeenCalled()
+    })
+  })
 })

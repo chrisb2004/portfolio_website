@@ -30,7 +30,7 @@ function MenuBar({ onHomeClick, onShowMainBody }) {
 
             <div id='downloadCVbutton-container'>
                 <img src={downloadIcon}></img>
-                <a id='downloadCVbutton' href='/Christopher-Blanco-CV.pdf' download>
+                <a id='downloadCVbutton' href={`${import.meta.env.BASE_URL}Christopher-Blanco-CV.pdf`} download>
                     Download CV
                 </a>
             </div> 
