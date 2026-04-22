@@ -22,7 +22,6 @@ function App() {
       <MenuBar 
         onHomeClick={handleHomeClick} 
         onShowMainBody={toggleMainBodyVisibility}
-
       />
       
       <section id='header-section'>

@@ -4,6 +4,7 @@ function MenuBarLink(props) {
     return (
         <div id='menu-bar-link'>
             <a 
+                id='menubarlink'
                 href={props.sectionLink} 
                 onClick={(e) => {
                     e.preventDefault();
